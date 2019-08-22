@@ -6,11 +6,11 @@ module.exports = function (app) {
 
 
     
-    router.get("/", function (req, res) {
+    app.get("/", function (req, res) {
         res.render("index")
 })
 
-router.get("/scrape", function (req, res) {
+app.get("/scrape", function (req, res) {
     axios.get("https://www.charlotteagenda.com/tag/open-houses/").then(function (response) {
         var $ = cheerio.load(response.data)
         
