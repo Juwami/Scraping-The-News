@@ -1,19 +1,51 @@
 var express = require("express");
-
+var axios = require("axios");
+var cheerio = require("cheerio");
 
 var router = express.Router();
 
-router.get("/", function(req, res) {
+var db = require("../models");
+
+router.get("/", function (req, res) {
     res.render("index")
 })
 
-router.get("/scrape", function(req, res) {
-    axios.get("https://news.google.com/topics/CAAqEQgKIgtDQklTQWdnR0tBQVAB?hl=en-US&gl=US&ceid=US%3Aen").then(function(response) {
+router.get("/scrape", function (req, res) {
+    axios.get("https://www.charlotteagenda.com/tag/open-houses/").then(function (response) {
         var $ = cheerio.load(response.data)
-        
-        $("a.VDXfz").each(function(i, element) {
+
+        $("div.indexstory").each(function (i, element) {
             var result = {};
+
+            result.title = $(this)
+                .find("div.entry-item")
+                .find("h1.entry-title")
+                .find("a")
+                .text();
+            result.link = $(this)
+                .find("div.entry-item")
+                .find("h1.entry-title")
+                .find("a")
+                .attr("href");
+            result.excerpt = $(this)
+                .find("div.excerpt.fullview")
+                .text();
+            result.postDate = $(this)
+                .find("div.entry-meta.fullview")
+                .find("div.byline-author")
+                .find("div.dateviews")
+                .find("div.bylinedate")
+                .text();
+
+            db.Article.create(result)
+                .then(function (house) {
+                    console.log(house)
+                })
+                .catch(function (err) {
+                    console.log(err)
+                })
         })
+        res.send("Houses in Charlotte Scraped")
     })
 })
 
