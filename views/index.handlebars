@@ -2,23 +2,27 @@
 
 <main class="container">
 
-<ul class="nav nav-pills">
-    <li class="nav-item">
-        <a href="/" class="nav-link active">Home</a>
-    </li>
-    <li class="nav-item">
-        <a href="#" class="nav-link active">Scrape</a>
-    </li>
-</ul>
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <a href="/" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link active">Pull Recent </a>
+        </li>
+    </ul>
 
     {{#each home}}
     <section class="card col-12">
-        <img>
-        <section class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <h5 class="card-subtitle">{{postDate}}</h5>
-            <p class="card-text">{{excerpt}}</p>
-            <a href="{{link}}" class="btn btn-primary">Go To Article</a>
+        <section class="col-4">
+            <img src="{{image}}">
+        </section>
+        <section class="col-8">
+            <section class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <h5 class="card-subtitle">{{postDate}}</h5>
+                <p class="card-text">{{excerpt}}</p>
+                <a href="{{link}}" class="btn btn-primary">Go To Article</a>
+            </section>
         </section>
     </section>
     {{/each}}

@@ -41,11 +41,18 @@ module.exports = function (app) {
                     .find("div.dateviews")
                     .find("div.bylinedate")
                     .text();
+                result.image = $(this)
+                    .find("div.thumbnail_image")
+                    .find("a")
+                    .find("img.thumbnail-image.lazy")
+                    .attr("src");
+                
+                    console.log(result.image)
 
-                db.Article.create(result)
-                    .then(function (house) {
-                        console.log(house)
-                    })
+                db.House.create(result)
+                    // .then(function (house) {
+                    //     console.log(house)
+                    // })
                     .catch(function (err) {
                         console.log(err)
                     })

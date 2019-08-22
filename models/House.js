@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
-var ArticleSchema = new Schema({
+var HouseSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -18,9 +18,13 @@ var ArticleSchema = new Schema({
     postDate: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
+        required: true
     }
 });
 
-var Article = mongoose.model("Article", ArticleSchema);
+var House = mongoose.model("House", HouseSchema);
 
-module.exports = Article;
+module.exports = House;
