@@ -61,16 +61,27 @@ module.exports = function (app) {
         })
     })
 
-    app.get("/saved", function(req, res) {
-        db.House.find({"saved": true})
-        .then(function(data) {
-            var hbsObject = {
-                home : data
-            };
-            res.render("saved", hbsObject)
-        })
+    app.get("/saved", function (req, res) {
+        db.House.find({
+                "saved": true
+            })
+            .then(function (data) {
+                var hbsObject = {
+                    home: data
+                };
+                res.render("saved", hbsObject)
+            })
     })
 
-    
+    app.post("/articlesave/:id", function (req, res) {
+        db.House.findOneAndUpdate({
+            _id: req.params.id
+        }, {
+            $set: {
+                saved: true
+            }
+        })
+        res.sendStatus(200)
+    })
 
 }
