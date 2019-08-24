@@ -1,6 +1,7 @@
 var axios = require("axios");
 var cheerio = require("cheerio");
-var db = require("./../models");
+var db = {};
+// var db = require("./../models");
 
 module.exports = function (app) {
 
