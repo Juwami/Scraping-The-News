@@ -2,6 +2,7 @@ var express = require("express");
 var logger = require("morgan");
 var exphbs = require("express-handlebars")
 var mongoose = require("mongoose");
+var path = require("path")
 
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/CharlotteHomes";
 
