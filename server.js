@@ -3,9 +3,9 @@ var logger = require("morgan");
 var exphbs = require("express-handlebars")
 var mongoose = require("mongoose");
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/CharlotteHomes";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/CharlotteHomes";
 
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
 var PORT = process.env.PORT || 8000;
 var app = express();
