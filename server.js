@@ -13,7 +13,7 @@ var app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(express.static("models"));
+// app.use(express.static("models"));
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
