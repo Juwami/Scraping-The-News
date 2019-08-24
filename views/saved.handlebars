@@ -6,16 +6,16 @@
         <li class="nav-item">
             <a href="/" class="nav-link active">Home</a>
         </li>
-        <li class="nav-item">
+        {{!-- <li class="nav-item">
             <a href="/scrape" class="nav-link active">Pull Recent </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a href="/saved" class="nav-link active">Saved Articles </a>
         </li>
     </ul>
 
     {{#each home}}
-    {{#unless saved}}
+    {{#if saved}}
     <section class="card col-12">
         {{!-- <section class="col-4">
             <img src="{{image}}">
@@ -25,11 +25,10 @@
                 <h5 class="card-title">{{title}}</h5>
                 <h5 class="card-subtitle">{{postDate}}</h5>
                 <p class="card-text">{{excerpt}}</p>
-                <a href="{{link}}" class="btn btn-primary float-left">Go To Article</a>
-                <a href="" class="float-right btn btn-secondary">Save Article</a>
+                <a href="{{link}}" class="btn btn-primary">Go To Article</a>
             </section>
         </section>
     </section>
-    {{/unless}}
+    {{/if}}
     {{/each}}
 </main>

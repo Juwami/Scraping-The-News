@@ -5,12 +5,12 @@ var db = require("../models");
 module.exports = function (app) {
 
     app.get("/", function (req, res) {
-        db.Article.find({})
+        db.House.find({})
             .then(function (data) {
                 var hbsObject = {
                     home: data
                 };
-                console.log(hbsObject)
+                // console.log(hbsObject)
                 res.render("index", hbsObject)
             })
     })
@@ -41,13 +41,13 @@ module.exports = function (app) {
                     .find("div.dateviews")
                     .find("div.bylinedate")
                     .text();
-                result.image = $(this)
-                    .find("div.thumbnail_image")
-                    .find("a")
-                    .find("img.thumbnail-image.lazy")
-                    .attr("src");
-                
-                    console.log(result.image)
+                // result.image = $(this)
+                //     .find("div.thumbnail_image")
+                //     .find("a").[0]
+                //     .find("img.thumbnail-image.lazy")
+                //     .attr("src");
+
+                // console.log("This is result.image" + result.image)
 
                 db.House.create(result)
                     // .then(function (house) {
@@ -57,7 +57,17 @@ module.exports = function (app) {
                         console.log(err)
                     })
             })
-            res.send("Houses in Charlotte Scraped")
+            res.redirect("/")
+        })
+    })
+
+    app.get("/saved", function(req, res) {
+        db.House.find({"saved": true})
+        .then(function(data) {
+            var hbsObject = {
+                home : data
+            };
+            res.render("saved", hbsObject)
         })
     })
 

@@ -9,7 +9,8 @@ var HouseSchema = new Schema({
     },
     link: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     excerpt: {
         type: String,
@@ -19,10 +20,19 @@ var HouseSchema = new Schema({
         type: String,
         required: true
     },
-    image: {
-        type: String,
+    saved: {
+        type: Boolean, default: 0,
         required: true
+    },
+    note: {
+        type: Schema.Types.ObjectId,
+        ref: "Note"
     }
+    // ,
+    // image: {
+    //     type: String,
+    //     required: true
+    // }
 });
 
 var House = mongoose.model("House", HouseSchema);
