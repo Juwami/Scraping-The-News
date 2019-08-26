@@ -17,7 +17,7 @@ module.exports = function (app) {
     })
 
     app.post("/destroy", function (req, res) {
-        db.House.destroy()
+        db.House.drop()
         .then(function() {
             location.reload();
         })
