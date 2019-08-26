@@ -16,6 +16,13 @@ module.exports = function (app) {
             })
     })
 
+    app.post("/destroy", function (req, res) {
+        db.House.destroy()
+        .then(function() {
+            location.reload();
+        })
+    })
+
     app.get("/scrape", function (req, res) {
         axios.get("https://www.charlotteagenda.com/tag/open-houses/").then(function (response) {
             var $ = cheerio.load(response.data)
