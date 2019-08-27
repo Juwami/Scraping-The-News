@@ -28,10 +28,10 @@ var HouseSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Note"
     },
-    image: {
-        type: String,
-        required: true
-    }
+    // image: {
+    //     type: String,
+    //     required: true
+    // }
 });
 
 var House = mongoose.model("House", HouseSchema);
