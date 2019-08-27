@@ -83,6 +83,7 @@ module.exports = function (app) {
     })
 
     app.post("/articlesave/:id", function (req, res) {
+        console.log(`About to save`)
         db.House.findOneAndUpdate({
             _id: req.params.id
         }, {
@@ -90,7 +91,8 @@ module.exports = function (app) {
                 saved: true
             }
         })
-        res.sendStatus(200)
+        console.log(res)
+        // res.sendStatus(200)
     })
 
 }
